@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jwoobim - Bimbel PAPS UGM</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lavender: #c9b8e8;
+    --lavender-light: #ede8f7;
+    --lavender-mid: #b8a6e0;
+    --mint: #b8e8d8;
+    --mint-light: #e8f7f2;
+    --peach: #f7d5c0;
+    --peach-mid: #f0b99a;
+    --yellow: #f7ebb8;
+    --yellow-mid: #f0d878;
+    --pink: #f7c8d8;
+    --text-dark: #3d2e6b;
+    --text-mid: #6b5a9e;
+    --text-soft: #9b8ec4;
+    --white: #ffffff;
+    --bg: #f5f0ff;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .flyer {
+    width: 520px;
+    background: var(--white);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(180,160,220,0.25);
+    animation: fadeUp 0.7s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .header {
+    background: linear-gradient(135deg, #ddd0f5 0%, #c9b8e8 50%, #b8cff0 100%);
+    padding: 36px 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blob1 { position: absolute; width: 180px; height: 180px; background: rgba(255,255,255,0.25); border-radius: 50%; top: -60px; right: -40px; }
+  .blob2 { position: absolute; width: 100px; height: 100px; background: rgba(248,215,200,0.4); border-radius: 50%; bottom: -20px; left: 60px; }
+  .blob3 { position: absolute; width: 60px; height: 60px; background: rgba(184,232,216,0.45); border-radius: 50%; top: 20px; right: 120px; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    color: var(--text-mid);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(180,160,220,0.2);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .header h1 span { color: var(--text-mid); }
+
+  .header p.sub {
+    margin-top: 10px;
+    color: var(--text-mid);
+    font-size: 13px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.7s 0.25s ease both;
+  }
+
+  .harga-wrap {
+    background: linear-gradient(135deg, #f7ebb8, #f7d5c0);
+    padding: 22px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .harga-main { display: flex; flex-direction: column; }
+
+  .harga-lama {
+    font-size: 13px;
+    color: rgba(61,46,107,0.45);
+    font-weight: 700;
+    text-decoration: line-through;
+  }
+
+  .harga-baru {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1;
+  }
+
+  .harga-note {
+    font-size: 12px;
+    color: var(--text-mid);
+    font-weight: 700;
+    margin-top: 3px;
+  }
+
+  .diskon-badge {
+    background: var(--white);
+    color: var(--text-mid);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 12px 18px;
+    border-radius: 16px;
+    text-align: center;
+    line-height: 1.3;
+    box-shadow: 0 4px 16px rgba(180,160,220,0.2);
+  }
+
+  .diskon-badge strong {
+    display: block;
+    font-size: 26px;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-dark);
+  }
+
+  .body { padding: 28px 36px 32px; }
+
+  .section-title {
+    color: var(--text-soft);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .sesi-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s 0.35s ease both;
+  }
+
+  .sesi-item {
+    background: var(--lavender-light);
+    border: 1.5px solid var(--lavender);
+    border-radius: 14px;
+    padding: 13px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sesi-item:nth-child(2n) { background: var(--mint-light); border-color: var(--mint); }
+
+  .sesi-num {
+    background: var(--lavender-mid);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 900;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .sesi-item:nth-child(2n) .sesi-num { background: #7ecbb5; }
+
+  .sesi-text { color: var(--text-dark); font-size: 13px; line-height: 1.4; font-weight: 600; }
+
+  .sesi-item.special {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #f7ebb8, #f7d5c0);
+    border-color: var(--peach-mid);
+  }
+
+  .sesi-item.special .sesi-num { background: var(--peach-mid); color: var(--text-dark); }
+  .sesi-item.special .sesi-text { color: var(--text-dark); font-weight: 700; }
+
+  .divider { height: 1.5px; background: var(--lavender-light); margin: 20px 0; }
+
+  .keunggulan {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .tag {
+    background: var(--lavender-light);
+    border: 1.5px solid var(--lavender);
+    color: var(--text-mid);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 13px;
+    border-radius: 20px;
+  }
+
+  .tag:nth-child(2n) { background: var(--mint-light); border-color: var(--mint); }
+  .tag:nth-child(3n) { background: var(--yellow); border-color: var(--yellow-mid); }
+
+  .cta-wrap { animation: fadeUp 0.7s 0.45s ease both; }
+
+  .cta-box {
+    background: linear-gradient(135deg, #c9b8e8, #b8cff0);
+    border-radius: 18px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .cta-text { color: var(--text-dark); font-size: 13px; font-weight: 600; line-height: 1.5; }
+  .cta-text strong { display: block; font-size: 16px; font-weight: 900; margin-bottom: 2px; }
+
+  .cta-btn {
+    background: var(--white);
+    color: var(--text-mid);
+    font-size: 13px;
+    font-weight: 800;
+    padding: 13px 20px;
+    border-radius: 12px;
+    white-space: nowrap;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(180,160,220,0.25);
+    transition: transform 0.2s;
+  }
+
+  .cta-btn:hover { transform: scale(1.04); }
+
+  .footer {
+    background: var(--lavender-light);
+    padding: 14px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeUp 0.7s 0.5s ease both;
+  }
+
+  .footer-label { color: var(--text-soft); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+
+  .deadline {
+    background: var(--peach);
+    border: 1.5px solid var(--peach-mid);
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <div class="header">
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+    <div class="blob3"></div>
+    <div class="badge">🎓 Promo Spesial</div>
+    <h1>Bimbel PAPS <span>UGM</span></h1>
+    <p class="sub">Potensi Akademik Pascasarjana · S2 & S3 · Online / Offline</p>
+  </div>
+
+  <div class="harga-wrap">
+    <div class="harga-main">
+      <span class="harga-lama">Normal Rp 875.000</span>
+      <span class="harga-baru">Rp 550K</span>
+      <span class="harga-note">7 sesi intensif · 1 sesi = 2 jam</span>
+    </div>
+    <div class="diskon-badge">
+      HEMAT<br>
+      <strong>37%</strong>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section-title">Materi 7 Sesi</div>
+    <div class="sesi-list">
+      <div class="sesi-item">
+        <div class="sesi-num">1</div>
+        <div class="sesi-text">Penalaran Verbal & Sinonim/Antonim</div>
+      </div>
+      <div class="sesi-item">
+        <div class="sesi-num">2</div>
+        <div class="sesi-text">Kemampuan Kuantitatif & Numerik</div>
+      </div>
+      <div class="sesi-item">
+        <div class="sesi-num">3</div>
+        <div class="sesi-text">Penalaran Logis & Analitis</div>
+      </div>
+      <div class="sesi-item">
+        <div class="sesi-num">4</div>
+        <div class="sesi-text">Penalaran Figural & Spasial</div>
+      </div>
+      <div class="sesi-item">
+        <div class="sesi-num">5</div>
+        <div class="sesi-text">Pemahaman Bacaan & Bahasa Indonesia</div>
+      </div>
+      <div class="sesi-item">
+        <div class="sesi-num">6</div>
+        <div class="sesi-text">Strategi & Manajemen Waktu Tes</div>
+      </div>
+      <div class="sesi-item special">
+        <div class="sesi-num">7</div>
+        <div class="sesi-text">🎯 Try Out Prediksi Standar PAPs UGM</div>
+      </div>
+    </div>
+
+    <div class="section-title">Keunggulan Program</div>
+    <div class="keunggulan">
+      <span class="tag">✅ Materi terkini</span>
+      <span class="tag">📚 Modul & bank soal</span>
+      <span class="tag">🕐 Jadwal fleksibel</span>
+      <span class="tag">💻 Online & offline</span>
+      <span class="tag">👨‍🏫 Tutor berpengalaman</span>
+      <span class="tag">📊 Evaluasi progress</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-wrap">
+      <div class="cta-box">
+        <div class="cta-text">
+          <strong>Daftar Sekarang!</strong>
+          Kursi terbatas, segera amankan tempat kamu sebelum kehabisan
+        </div>
+        <a class="cta-btn" href="https://wa.me/6281770458148?text=Halo%20Jwoobim%2C%20saya%20mau%20daftar%20Bimbel%20PAPS%20UGM%20promo%207%20sesi%20550K" target="_blank">Daftar<br>via WA ›</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span class="footer-label">Jwoobim</span>
+    <span class="deadline">⏳ Promo terbatas</span>
+  </div>
+
+</div>
+</body>
+</html>
