@@ -1,2 +1,2 @@
 # JwooBim-PAPS-UGM
-Promo Bimbel PAPS UGM
+Bimbel PAPS UGM
